@@ -84,7 +84,8 @@ module.exports = targets => {
          *   })
          * );
          */
-        payments: new targets.types.Sync(['payments'])
+        payments: new targets.types.Sync(['payments']),
+        productThumbnail: new targets.types.Sync(['thumbnail'])
     });
 };
 
