@@ -46,27 +46,52 @@ const categoryProps = {
     id: 3
 };
 
-test('renders the correct tree', () => {
-    useCategory.mockReturnValueOnce(talonProps);
-    const tree = createTestInstance(<Category {...categoryProps} />);
-    expect(tree.toJSON()).toMatchSnapshot();
-});
-
-test('it renders a loading indicator when appropriate', () => {
-    useCategory.mockReturnValueOnce({
-        ...talonProps,
-        loading: true
+describe('Category Root Component', () => {
+    test('renders the correct tree', () => {
+        useCategory.mockReturnValueOnce(talonProps);
+        const tree = createTestInstance(<Category {...categoryProps} />);
+        expect(tree.toJSON()).toMatchSnapshot();
     });
-    const tree = createTestInstance(<Category {...categoryProps} />);
-    expect(tree.toJSON()).toMatchSnapshot();
-});
 
-test('it shows error when appropriate', () => {
-    useCategory.mockReturnValueOnce({
-        ...talonProps,
-        error: true,
-        loading: false
+    describe('loading indicator', () => {
+        test('does not render when data is present', () => {
+            useCategory.mockReturnValueOnce({
+                ...talonProps,
+                loading: true
+            });
+            const tree = createTestInstance(<Category {...categoryProps} />);
+            expect(tree.toJSON()).toMatchSnapshot();
+        });
+        test('renders when data is not present', () => {
+            useCategory.mockReturnValueOnce({
+                ...talonProps,
+                loading: true,
+                categoryData: undefined
+            });
+            const tree = createTestInstance(<Category {...categoryProps} />);
+            expect(tree.toJSON()).toMatchSnapshot();
+        });
     });
-    const tree = createTestInstance(<Category {...categoryProps} />);
-    expect(tree.toJSON()).toMatchSnapshot();
+
+    describe('error view', () => {
+        test('does not render when data is present', () => {
+            useCategory.mockReturnValueOnce({
+                ...talonProps,
+                error: true
+            });
+            const tree = createTestInstance(<Category {...categoryProps} />);
+            expect(tree.toJSON()).toMatchSnapshot();
+        });
+
+        test('renders when data is not present and not loading', () => {
+            useCategory.mockReturnValueOnce({
+                ...talonProps,
+                error: true,
+                loading: false,
+                categoryData: undefined
+            });
+            const tree = createTestInstance(<Category {...categoryProps} />);
+            expect(tree.toJSON()).toMatchSnapshot();
+        });
+    });
 });
