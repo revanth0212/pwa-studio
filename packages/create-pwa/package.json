@@ -1,6 +1,6 @@
 {
-  "name": "@magento/create-pwa",
-  "version": "1.2.0",
+  "name": "create-pwa-revanth",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -22,12 +22,12 @@
     "create-pwa-app",
     "pwa-studio"
   ],
-  "author": "Magento Commerce",
-  "license": "(OSL-3.0 OR AFL-3.0)",
+  "author": "Revanth",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/magento/pwa-studio/issues"
+    "url": "https://github.com/revanth0212/pwa-studio/issues"
   },
-  "homepage": "https://github.com/magento/pwa-studio/tree/master/packages/create-pwa#readme",
+  "homepage": "https://github.com/revanth0212/pwa-studio/tree/master/packages/create-pwa#readme",
   "dependencies": {
     "@magento/pwa-buildpack": "~8.0.0",
     "chalk": "^2.4.2",
